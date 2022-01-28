@@ -1,6 +1,17 @@
 package com.company;
 
-public class Dog implements CanRun {
+import java.util.Objects;
+
+public class Dog implements Runnable {
+
+
+    protected String name;
+    private double speed;
+    private boolean chain;
+    private double distanceTravelled;
+    private double damage;
+    private String appearance;
+    private double potentialSpeed;
 
 
     @Override
@@ -10,7 +21,7 @@ public class Dog implements CanRun {
 
     @Override
     public int hashCode() {
-        return name.hashCode()*((int) potentialSpeed);
+        return Objects.hash(name, speed, chain, distanceTravelled, damage, appearance, potentialSpeed);
     }
 
 
@@ -23,22 +34,13 @@ public class Dog implements CanRun {
         if (getClass() != obj.getClass())
             return false;
         Dog other = (Dog) obj;
-        if (potentialSpeed != other.potentialSpeed)
+        if (!Objects.equals(potentialSpeed, other.potentialSpeed))
             return false;
-        if (name != other.name)
+        if (!Objects.equals(name, other.name))
             return false;
         return true;
     }
 
-
-
-    protected String name;
-    private double speed;
-    private boolean chain;
-    private double distanceTravelled;
-    private double damage;
-    private String appearance;
-    private double potentialSpeed;
 
 
     public void untieTheChain(Shorty shorty) {
@@ -91,7 +93,7 @@ public class Dog implements CanRun {
     }
 
 
-    public void toBite(CanBeAPursuer canBeAPursuer) throws ShortyCannotDieException {
+    public void toBite(Pursuer canBeAPursuer) throws ShortyCannotDieException {
         canBeAPursuer.getHurtByPurpose(this.damage);
         System.out.println(this + " bite the " + canBeAPursuer);
 

@@ -1,11 +1,13 @@
 package com.company;
 
+import java.util.Objects;
+
 public class StrawberryGardens implements TerritoryDecoration{
 
     String description;
 
-    public void beDamaged(CanRun canRun, String description){
-        System.out.println(canRun.toString() + " " + description + " trampled on the strawberry");
+    public void beDamaged(Runnable runnable, String description){
+        System.out.println(runnable.toString() + " " + description + " trampled on the strawberry");
     }
 
     @Override
@@ -27,7 +29,7 @@ public class StrawberryGardens implements TerritoryDecoration{
         if (getClass() != obj.getClass())
             return false;
         StrawberryGardens other = (StrawberryGardens) obj;
-        if (description != other.description)
+        if (!Objects.equals(description, other.description))
             return false;
         return true;
     }

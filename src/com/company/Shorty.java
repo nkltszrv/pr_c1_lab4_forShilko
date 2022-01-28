@@ -1,6 +1,8 @@
 package com.company;
 
-public class Shorty implements CanRun {
+import java.util.Objects;
+
+public class Shorty implements Runnable {
 
 
     private static final double minHp = 1.0;
@@ -26,8 +28,7 @@ public class Shorty implements CanRun {
 
     @Override
     public int hashCode() {
-        int speedy = (int) this.potentialSpeed;
-        return name.hashCode() * 101 + speedy;
+        return Objects.hash(name, speed, distanceTravelled, hp, potentialSpeed);
     }
 
     @Override
@@ -44,7 +45,7 @@ public class Shorty implements CanRun {
         if (getClass() != obj.getClass())
             return false;
         Shorty other = (Shorty) obj;
-        if (name != other.name)
+        if (!Objects.equals(name, other.name))
             return false;
         return true;
     }
@@ -83,7 +84,6 @@ public class Shorty implements CanRun {
         public boolean getBeBound(){
             return beBound;
         }
-
     }
 
     Hands hands = new Hands();
@@ -158,5 +158,7 @@ public class Shorty implements CanRun {
         }
 
     }
-}
 
+
+
+}

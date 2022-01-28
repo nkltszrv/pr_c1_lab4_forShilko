@@ -1,10 +1,13 @@
 package com.company;
 
-public class DogWhoCanBeAPurpose extends Dog implements CanBeAPurpose{
+
+public class DogWhoCanBeAPurpose extends Dog implements Purpose{
 
     private double distanceToThePursuer;
     private double preoccupationWithTheSituation;
     private double timeOfRunning = 0;
+
+
 
     public DogWhoCanBeAPurpose(String name, double speed, boolean chain, double damage, double distanceToThePursuer, double potentialSpeed, String appearance, double preoccupationWithTheSituation) {
         super(name,speed, chain, damage, potentialSpeed, appearance);
@@ -34,26 +37,26 @@ public class DogWhoCanBeAPurpose extends Dog implements CanBeAPurpose{
     public void  setTimeOfRunning(double timeOfRunning){this.timeOfRunning = timeOfRunning;}
 
 
-    public void runForOrCatchingUp(CanBeAPursuer canBeAPursuer) throws ShortyCannotDieException {
+    public void runForOrCatchingUp(Pursuer pursuer) throws ShortyCannotDieException {
         double distance2;
         double dogSpeed = this.getSpeed();
-        double shortySpeed = canBeAPursuer.getSpeed();
+        double shortySpeed = pursuer.getSpeed();
         double distance = this.getDistanceToThePursuer();
         distance2 =  distance - (dogSpeed - shortySpeed) * 0.5;
         this.setDistanceToThePursuer(distance2);
-        canBeAPursuer.setDistanceToThePurpose(distance2);
+        pursuer.setDistanceToThePurpose(distance2);
         if (distance <=0){
-            this.toCatchUp(canBeAPursuer);
+            this.toCatchUp(pursuer);
             this.preoccupationWithTheSituation += 1;
         }
         System.out.println("New distance between purpose and pursuer: " + distance);
     }
 
 
-    public void toCatchUp(CanBeAPursuer canBeAPursuer ) throws ShortyCannotDieException{
-        String shortyName = canBeAPursuer.toString();
+    public void toCatchUp(Pursuer pursuer ) throws ShortyCannotDieException{
+        String shortyName = pursuer.toString();
         System.out.println(this.name + " catch the " + shortyName);
-        this.toBite(canBeAPursuer);
+        this.toBite(pursuer);
     }
 
 

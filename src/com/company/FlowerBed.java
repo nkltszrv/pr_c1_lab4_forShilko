@@ -1,15 +1,18 @@
 package com.company;
 
+import java.util.Objects;
+
 public class FlowerBed implements TerritoryDecoration {
 
 
     private Flowers typeOfFlowers;
     private int number;
+    private String nameOfTwoOrMoreFlowers;
 
 
     @Override
     public int hashCode() {
-        return typeOfFlowers.hashCode() * 101 + number;
+        return Objects.hash(typeOfFlowers, number, nameOfTwoOrMoreFlowers);
     }
 
     @Override
@@ -26,9 +29,9 @@ public class FlowerBed implements TerritoryDecoration {
         if (getClass() != obj.getClass())
             return false;
         FlowerBed other = (FlowerBed) obj;
-        if (typeOfFlowers != other.typeOfFlowers)
+        if (!Objects.equals(typeOfFlowers, other.typeOfFlowers))
             return false;
-        if (number != other.number)
+        if (!Objects.equals(number, other.number))
             return false;
         return true;
     }
@@ -38,20 +41,34 @@ public class FlowerBed implements TerritoryDecoration {
     public FlowerBed(Flowers flowers, int number){
         this.typeOfFlowers = flowers;
         this.number = number;
+        switch (this.typeOfFlowers){
+            case DAISY:
+                nameOfTwoOrMoreFlowers = "Daisies";
+                break;
+            case CHAMOMILE:
+                nameOfTwoOrMoreFlowers = "Chamomiles";
+                break;
+            case TULIP:
+                nameOfTwoOrMoreFlowers = "Tulips";
+                break;
+            case PANSY:
+                nameOfTwoOrMoreFlowers = "Pansies";
+                break;
+        }
     }
 
 
-    public void beDamaged(CanRun canRun, String description){
+    public void beDamaged(Runnable runnable, String description){
         System.out.println("The flowerbed was"+ description + "  damaged");
     }
 
 
 
-    public void beRippedOut(WayToBeRippedOut wayToBeRippedOut, FromWhatToBeRippedOut fromWhatToBeRippedOut, CanRun canRun){
-        String nameOfFlowers = "";
+    public void beRippedOut(WayToBeRippedOut wayToBeRippedOut, FromWhatToBeRippedOut fromWhatToBeRippedOut, Runnable runnable){
+        String nameOfTwoOrMoreFlowers = "";
         String fromWhat = "";
         String howTo = "";
-        String nameOfBadCreature = canRun.toString();
+        String nameOfBadCreature = runnable.toString();
         String side = "";
         if (Math.random() > 0.5){
             side = "left";
@@ -60,20 +77,6 @@ public class FlowerBed implements TerritoryDecoration {
             side = "right";
         }
 
-        switch (this.typeOfFlowers){
-            case DAISY:
-                nameOfFlowers = "Daisies";
-                break;
-            case CHAMOMILE:
-                nameOfFlowers = "Chamomiles";
-                break;
-            case TULIP:
-                nameOfFlowers = "Tulips";
-                break;
-            case PANSY:
-                nameOfFlowers = "Pansies";
-                break;
-        }
 
         switch (wayToBeRippedOut){
             case WITH_ROOT:
@@ -95,7 +98,7 @@ public class FlowerBed implements TerritoryDecoration {
         }
 
 
-        System.out.println(nameOfFlowers + " " + howTo + " fly away " + fromWhat + " to the " + side );
+        System.out.println(this.nameOfTwoOrMoreFlowers+ " " + howTo + " fly away " + fromWhat + " to the " + side );
 
     }
 

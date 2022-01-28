@@ -1,6 +1,6 @@
 package com.company;
 
-public interface CanBeAPurpose {
+public interface Purpose {
 
     public void runForOrCatchingUp(CanBeAPursuer canBeAPursuer) throws ShortyCannotDieException;
     public void toCatchUp(CanBeAPursuer canBeAPursuer) throws ShortyCannotDieException;

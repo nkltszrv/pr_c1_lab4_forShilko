@@ -1,8 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class Main {
 
@@ -27,20 +26,12 @@ public class Main {
         home.addFlowerBedToTheEnvironment(flowerBedWithPansies);
         home.addFlowerBedToTheEnvironment(flowerBedWithTulips);
 
-
         StrawberryGardens strawberryGardens = new StrawberryGardens();
-
 
         Case case1 = new Case(0);
 
 
-
-
-
-
         case1.toTakeAnUnwantedTurn(Milordick, ProstoPsina, Neznaika, home, Feks, Fiks, strawberryGardens);
-
-
 
     }
 }

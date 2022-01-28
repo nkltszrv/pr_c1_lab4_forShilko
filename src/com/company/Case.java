@@ -5,13 +5,12 @@ import java.util.TimerTask;
 
 public class Case extends Situation {
 
+    private Timer timer;
 
     @Override
     public String toString() {
         return "case lol";
     }
-
-    private Timer timer;
 
 
     public void toTakeAnUnwantedTurn(DogWhoCanBeAPurpose dogWhoCanBeAPurpose1, DogWhoCanBeAPurpose dogWhoCanBeAPurpose2, ShortyWhoCanBeAPursuer shortyWhoCanBeAPursuer, Home home, Shorty shorty1, Shorty shorty2, StrawberryGardens strawberryGardens){
@@ -46,9 +45,9 @@ public class Case extends Situation {
         Timer timer3 = new Timer();
         Timer timer4 = new Timer();
         Timer timer5 = new Timer();
-        timer3.schedule(timerTaskDogPart2n1, 60010, 500);
-        timer4.schedule(timerTaskDogPart2n2, 60010,  500);
-        timer5.schedule(timerTaskShortyPart2, 60010, 500);
+        timer3.schedule(timerTaskShortyPart2, 60010, 500);
+        timer4.schedule(timerTaskDogPart2n2, 60030,  500);
+        timer5.schedule(timerTaskDogPart2n1, 60030, 500);
 
         Timer timer6 = new Timer();
         timer6.schedule(timerTaskReinforcement, 60000);

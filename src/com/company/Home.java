@@ -1,5 +1,6 @@
 package com.company;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Home implements Building{
 
@@ -25,13 +26,12 @@ public class Home implements Building{
         if (getClass() != obj.getClass())
             return false;
         Home other = (Home) obj;
-        if (countOfFlowerBeds != other.countOfFlowerBeds)
+        if (!Objects.equals(countOfFlowerBeds, other.countOfFlowerBeds))
             return false;
-        if (environment != other.environment)
+        if (!Objects.equals(environment, other.environment))
             return false;
         return true;
     }
-
 
 
     public int getSizeOfEnvironment(){

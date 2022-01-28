@@ -1,6 +1,6 @@
 package com.company;
 
-public interface CanRun {
+public interface Runnable {
 
     public void toRun();
 

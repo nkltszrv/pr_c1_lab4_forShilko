@@ -1,6 +1,6 @@
 package com.company;
 
-public interface CanBeAPursuer {
+public interface Pursuer {
 
     public void toCheckTheDistanceToThePurpose(CanBeAPurpose canBeAPurpose);
     public double getDistanceToThePurpose();

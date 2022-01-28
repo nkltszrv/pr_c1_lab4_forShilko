@@ -1,7 +1,7 @@
 package com.company;
 
 
-public class ShortyWhoCanBeAPursuer extends Shorty implements CanBeAPursuer{
+public class ShortyWhoCanBeAPursuer extends Shorty implements Pursuer {
 
     private double potentialSpeed;
     private double hp;
@@ -48,12 +48,12 @@ public class ShortyWhoCanBeAPursuer extends Shorty implements CanBeAPursuer{
     public void  setTimeOfRunning(double timeOfRunning){this.timeOfRunning = timeOfRunning;}
 
 
-    @Override
+
     public double getSpeed() {
         return this.speed;
     }
 
-    @Override
+
     public void getHurtByPurpose(double damage) throws ShortyCannotDieException {
         if (this.hp - damage >= Parameter.getMinHp()) {
             this.preoccupationWithTheSituation += 1;
@@ -82,15 +82,13 @@ public class ShortyWhoCanBeAPursuer extends Shorty implements CanBeAPursuer{
 
 
 
-    public void toCheckTheDistanceToThePurpose(CanBeAPurpose canBeAPurpose){
+    public void toCheckTheDistanceToThePurpose(Purpose purpose){
         if (this.distanceToThePurpose <= 4){
             TurnAside turnAside = new TurnAside();
-            turnAside.doReception(this, canBeAPurpose);
+            turnAside.doReception(this, purpose);
         }
 
     }
-
-
 
 
     public double getDistanceToThePurpose(){
@@ -101,7 +99,6 @@ public class ShortyWhoCanBeAPursuer extends Shorty implements CanBeAPursuer{
     public void setDistanceToThePurpose(double distanceToThePurpose) {
         this.distanceToThePurpose = distanceToThePurpose;
     }
-
 
 
 }
